@@ -71,15 +71,18 @@ document.onkeyup = function(event) {
     numGuesses--;
     guessChoices.push(userGuess);
     updateGuessChoices(guessChoices);
+    remainingGuesses(numGuesses);
   }
 
   if (numGuesses === 0) {
     numGuesses = 9;
     losses++;
+    updateLosses();
     guessChoices = [];
   }
   if (userGuess === computerGuess) {
     wins++;
+    updateWins();
     numGuesses = 9;
     guessChoices = [];
   }
@@ -89,7 +92,19 @@ document.onkeyup = function(event) {
 
 function updateGuessChoices(guess) {
   //   console.log(guess);
-  var selector = document.getElementById("letteroutcome");
+  var selector = (document.getElementById("letteroutcome").innerHTML = guess);
 
   // get array of choices and push to html
+}
+
+function updateWins() {
+  var selector = document.getElementById("wins").innerHTML++;
+}
+
+function updateLosses() {
+  var selector = document.getElementById("loses").innerHTML++;
+}
+
+function remainingGuesses(i) {
+  var selector = (document.getElementById("remainingGuesses").innerHTML = i);
 }
